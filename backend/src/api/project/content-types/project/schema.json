@@ -1,0 +1,62 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "Project",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "date": {
+      "type": "date"
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "technology": {
+      "type": "customField",
+      "default": "[]",
+      "options": [
+        "HTML",
+        "CSS",
+        "Javascript",
+        "ReactJS",
+        "NextJS",
+        "NodeJS",
+        "SQL",
+        "GraphQL",
+        "Strapi",
+        "TailwindCSS",
+        "TypeScript",
+        "SCSS",
+        "Jquery",
+        "Bootstrap",
+        "GSAP",
+        "Figma"
+      ],
+      "customField": "plugin::multi-select.multi-select"
+    }
+  }
+}
