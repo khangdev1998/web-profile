@@ -1,9 +1,8 @@
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router";
+
 const App = () => {
-  return (
-    <div>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo quia a, totam quisquam earum ex aliquam mollitia eius deleniti quas dicta nam libero hic aut facilis voluptates quasi. Expedita, maxime.
-    </div>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;
