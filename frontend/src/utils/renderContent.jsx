@@ -1,5 +1,7 @@
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
+import {
+  materialDark,
+} from "react-syntax-highlighter/dist/esm/styles/prism";
 import DOMPurify from "dompurify";
 
 export const renderContent = (content) => {
@@ -21,23 +23,41 @@ export const renderContent = (content) => {
         ? languageClass.replace("language-", "")
         : "text";
 
-      const code = codeElement.textContent;
+      const originalCode = codeElement.textContent;
 
       elements.push(
-        <div key={`syntax-${index}`} className="my-6">
-          <SyntaxHighlighter
-            language={language}
-            style={dracula}
-            className="rounded-lg"
-            customStyle={{
-              padding: "1.4rem",
-              background: "#282a36",
+        <div key={`syntax-${index}`} className="relative">
+          {/* Copy button */}
+          <button
+            onClick={() => {
+              const codeBlock = document.getElementById(`code-block-${index}`);
+              const selection = window.getSelection();
+              
+              // If there's a selection, copy only the selected text
+              if (!selection.isCollapsed && selection.containsNode(codeBlock, true)) {
+                const selectedText = selection.toString();
+                navigator.clipboard.writeText(selectedText);
+              } else {
+                // Otherwise copy the entire code block
+                navigator.clipboard.writeText(originalCode);
+              }
             }}
-            showLineNumbers={true}
-            wrapLongLines={true}
+            className="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm z-10"
           >
-            {code}
-          </SyntaxHighlighter>
+            Copy
+          </button>
+
+          {/* Syntax highlighted code */}
+          <div id={`code-block-${index}`}>
+            <SyntaxHighlighter
+              language={language}
+              style={materialDark}
+              showLineNumbers={true}
+              useInlineStyles={true}
+            >
+              {originalCode}
+            </SyntaxHighlighter>
+          </div>
         </div>
       );
 

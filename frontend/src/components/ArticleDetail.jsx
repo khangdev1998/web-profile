@@ -87,7 +87,7 @@ const ArticleDetail = () => {
           </time>
         </div>
       </div>
-      <div className="prose prose-lg dark:prose-invert prose-img:rounded-xl max-w-full prose-a:text-blue-500 prose-img:w-full hover:prose-a:text-blue-400 prose-code:text-lg">
+      <div className="prose prose-lg dark:prose-invert prose-img:rounded-xl max-w-full prose-a:text-blue-400 prose-img:w-full hover:prose-a:text-blue-300 prose-code:text-lg prose-figcaption:text-sm prose-figcaption:mt-2 prose-figcaption:text-center">
         {renderContent(post.content)}
       </div>
     </article>
